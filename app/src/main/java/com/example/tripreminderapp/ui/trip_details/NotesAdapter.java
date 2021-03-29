@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tripreminderiti.R;
-import com.example.tripreminderiti.database.note.Note;
+import com.example.tripreminderapp.R;
+import com.example.tripreminderapp.database.note.Note;
 
 import java.util.List;
 

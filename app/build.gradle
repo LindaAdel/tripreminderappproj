@@ -27,6 +27,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    viewBinding {
+        enabled true
+    }
+
 }
 
 dependencies {
@@ -61,6 +66,7 @@ dependencies {
 
     //map polyline
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
 
 
 

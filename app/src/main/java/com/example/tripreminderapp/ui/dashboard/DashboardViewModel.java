@@ -1,16 +1,13 @@
 package com.example.tripreminderapp.ui.dashboard;
 
 import android.app.Application;
-import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.example.tripreminderiti.database.TripDatabase;
-import com.example.tripreminderiti.database.trip.Trip;
+import com.example.tripreminderapp.database.TripDatabase;
+import com.example.tripreminderapp.database.trip.Trip;
 
 import java.util.List;
 

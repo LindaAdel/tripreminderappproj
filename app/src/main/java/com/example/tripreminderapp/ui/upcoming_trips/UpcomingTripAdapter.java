@@ -1,6 +1,5 @@
 package com.example.tripreminderapp.ui.upcoming_trips;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tripreminderiti.R;
-import com.example.tripreminderiti.database.trip.Trip;
+import com.example.tripreminderapp.R;
+import com.example.tripreminderapp.database.trip.Trip;
 
 import java.util.List;
 

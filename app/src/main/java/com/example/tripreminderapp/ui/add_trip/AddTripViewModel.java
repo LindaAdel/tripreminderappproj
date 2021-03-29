@@ -1,11 +1,13 @@
 package com.example.tripreminderapp.ui.add_trip;
 
 import android.app.Application;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import com.example.tripreminderiti.database.TripDatabase;
-import com.example.tripreminderiti.database.trip.Trip;
+
+import com.example.tripreminderapp.database.TripDatabase;
+import com.example.tripreminderapp.database.trip.Trip;
 
 public class AddTripViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> isInsertedLiveData =new MutableLiveData<Boolean>(false);

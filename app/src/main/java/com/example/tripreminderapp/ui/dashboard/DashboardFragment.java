@@ -1,32 +1,21 @@
 package com.example.tripreminderapp.ui.dashboard;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.tripreminderiti.GeoLocation;
-
-import com.example.tripreminderiti.R;
-import com.example.tripreminderiti.database.TripDatabase;
-import com.example.tripreminderiti.database.trip.Trip;
-import com.example.tripreminderiti.databinding.FragmentDashboardBinding;
-import com.example.tripreminderiti.databinding.FragmentUpcomingBinding;
-import com.example.tripreminderiti.ui.add_trip.AddTripActivity;
-import com.example.tripreminderiti.ui.upcoming_trips.UpcomingTripsViewModel;
+import com.example.tripreminderapp.GeoLocation;
+import com.example.tripreminderapp.database.TripDatabase;
+import com.example.tripreminderapp.database.trip.Trip;
+import com.example.tripreminderapp.databinding.FragmentDashboardBinding;
 
 import java.util.List;
 
