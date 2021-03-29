@@ -20,13 +20,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tripreminderiti.R;
-import com.example.tripreminderiti.database.TripDatabase;
-import com.example.tripreminderiti.database.note.Note;
-import com.example.tripreminderiti.database.trip.Trip;
-import com.example.tripreminderiti.databinding.ActivityAddTripBinding;
-import com.example.tripreminderiti.databinding.ActivityTripDetailsBinding;
-import com.example.tripreminderiti.ui.upcoming_trips.UpcomingTripsFragment;
+import com.example.tripreminderapp.R;
+import com.example.tripreminderapp.database.TripDatabase;
+import com.example.tripreminderapp.database.note.Note;
+import com.example.tripreminderapp.database.trip.Trip;
+import com.example.tripreminderapp.databinding.ActivityTripDetailsBinding;
+import com.example.tripreminderapp.ui.upcoming_trips.UpcomingTripsFragment;
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
@@ -39,10 +38,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-
-
-
-import androidx.fragment.app.DialogFragment;
 
 
 

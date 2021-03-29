@@ -1,24 +1,20 @@
 package com.example.tripreminderapp.ui.upcoming_trips;
 
 import android.app.Application;
-import android.content.Intent;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
-import com.example.tripreminderiti.MyWorker;
-import com.example.tripreminderiti.database.TripDatabase;
-import com.example.tripreminderiti.database.trip.Trip;
+import com.example.tripreminderapp.MyWorker;
+import com.example.tripreminderapp.database.TripDatabase;
+import com.example.tripreminderapp.database.trip.Trip;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;

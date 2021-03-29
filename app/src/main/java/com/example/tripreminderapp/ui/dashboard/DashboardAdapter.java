@@ -10,9 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tripreminderiti.R;
-import com.example.tripreminderiti.database.trip.Trip;
-import com.example.tripreminderiti.ui.upcoming_trips.UpcomingTripAdapter;
+import com.example.tripreminderapp.R;
+import com.example.tripreminderapp.database.trip.Trip;
 
 import java.util.List;
 

@@ -16,9 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.tripreminderiti.R;
-import com.example.tripreminderiti.database.trip.Trip;
-import com.example.tripreminderiti.databinding.ActivityAddTripBinding;
+import com.example.tripreminderapp.R;
+import com.example.tripreminderapp.database.trip.Trip;
+import com.example.tripreminderapp.databinding.ActivityAddTripBinding;
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
@@ -33,7 +33,7 @@ import java.util.Locale;
 
 public class AddTripActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private ActivityAddTripBinding  binding;
+    private ActivityAddTripBinding binding;
     private static final String TAG = "Tag";
     private static final int REQ_CODE = 111;
     final Calendar myCalendar = Calendar.getInstance();

@@ -1,40 +1,28 @@
 package com.example.tripreminderapp.ui.upcoming_trips;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.tripreminderiti.GeoLocation;
-import com.example.tripreminderiti.ui.add_trip.AddTripActivity;
-import com.example.tripreminderiti.R;
-import com.example.tripreminderiti.database.TripDatabase;
-import com.example.tripreminderiti.database.note.Note;
-import com.example.tripreminderiti.database.trip.Trip;
-import com.example.tripreminderiti.databinding.FragmentUpcomingBinding;
-import com.example.tripreminderiti.ui.dashboard.DashboardFragment;
-import com.example.tripreminderiti.ui.dashboard.DashboardViewModel;
-import com.example.tripreminderiti.ui.trip_details.TripDetailsActivity;
+import com.example.tripreminderapp.R;
+import com.example.tripreminderapp.database.TripDatabase;
+import com.example.tripreminderapp.database.note.Note;
+import com.example.tripreminderapp.database.trip.Trip;
+import com.example.tripreminderapp.databinding.FragmentUpcomingBinding;
+import com.example.tripreminderapp.ui.add_trip.AddTripActivity;
+import com.example.tripreminderapp.ui.trip_details.TripDetailsActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UpcomingTripsFragment extends Fragment {

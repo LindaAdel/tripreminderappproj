@@ -6,9 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.tripreminderiti.database.TripDatabase;
-import com.example.tripreminderiti.database.note.Note;
-import com.example.tripreminderiti.database.trip.Trip;
+import com.example.tripreminderapp.database.TripDatabase;
+import com.example.tripreminderapp.database.note.Note;
+import com.example.tripreminderapp.database.trip.Trip;
 
 import java.util.List;
 
