@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">TripReminderApp</string>
+    <string name="account">Already Have An Account?</string>
+    <string name="E_mail">E_mail</string>
+    <string name="Password">Password</string>
+    <string name="LOGIN">LOGIN</string>
+    <string name="OR">OR</string>
+    <string name="newAccount">New Account? Register Now</string>
+    <string name="aNewAcc">Create A New Account</string>
+    <string name="signUp">SIGNUP</string>
+    <string name="facebook_app_id">499793114363397</string>
+    <string name="fb_login_protocol_scheme">fb499793114363397</string>
+    <string name="app">Trip Reminder App</string>
+    <string name="s1">Plan your Trips</string>
+    <string name="s2">Trip Alarm</string>
+    <string name="s3">Easy Navigation</string>
+    <string name="next">next</string>
+    <string-array name="types">
+        <item>One Direction</item>
+        <item>Round Trip</item>
+    </string-array>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="api_places_key">AIzaSyCVOvMSNN18_AJKQjfKfoWKxsYNF5GNxK0</string>
+
+
+
+
+</resources>
