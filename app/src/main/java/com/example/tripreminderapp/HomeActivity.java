@@ -20,6 +20,8 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+        getSupportActionBar().hide();
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
@@ -27,11 +29,16 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+//        ActionBar actionBar = getActionBar();
+//        actionBar.hide();
+
 
 //        Intent intent = new Intent(HomeActivity.this,AddTripActivity.class);
 //        startActivityForResult(intent,100);
 
     }
+
+
 
  //   @Override
 //    public boolean onOptionsItemSelected(@NonNull MenuItem item) {

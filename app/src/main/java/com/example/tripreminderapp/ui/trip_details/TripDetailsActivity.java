@@ -54,7 +54,7 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
     private AlertDialog notesDialog=null;
 
 
-    //Mido
+    //Mido.com
     final Calendar myCalendar = Calendar.getInstance();
     private AlertDialog addNoteDialog=null;
 
@@ -64,7 +64,7 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         binding = ActivityTripDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         viewModel = ViewModelProviders.of(this).get(TripDetailsViewModel.class);
-
+        getSupportActionBar().hide();
 
         spinner = findViewById(R.id.trip_type);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.types, R.layout.spinner_item);
@@ -105,11 +105,11 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         spinner.setSelection(((ArrayAdapter<String>)spinner.getAdapter()).getPosition(currentTrip.getSpinner()));
 
 
-        //viewModel.getNotesFromDatabase(currentTrip.getId());
+        viewModel.getNotesFromDatabase(currentTrip.getId());
 
-//        viewModel.getNotesLiveData().observe(this,notes -> {
-//            notesAdapter.changeData(notes);
-//        });
+        viewModel.getNotesLiveData().observe(this,notes -> {
+            notesAdapter.changeData(notes);
+        });
 
         viewModel.getNotesLiveData().observe(this,notes -> {
             showNotesDialog(notes);
@@ -120,13 +120,13 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
                 changeBehaviour(aBoolean);
 
         });
-/*
-        binding.detailsBtnNotes.setOnClickListener(new View.OnClickListener() {
+
+        binding.detailsBtnShownotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewModel.getNotesFromDatabase(currentTrip.getId());
             }
-        });*/
+        });
 
         notesAdapter.setNoteDeleteClickListener = new NotesAdapter.NoteDeleteClickListener() {
             @Override

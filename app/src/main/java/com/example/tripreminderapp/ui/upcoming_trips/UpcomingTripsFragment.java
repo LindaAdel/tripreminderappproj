@@ -35,6 +35,13 @@ public class UpcomingTripsFragment extends Fragment {
 
     List<Trip> trips;
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        tripsViewModel.getTripsFromDatabase();
+
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentUpcomingBinding.inflate(inflater, container, false);

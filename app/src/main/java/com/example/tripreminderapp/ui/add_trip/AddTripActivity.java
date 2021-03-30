@@ -48,7 +48,7 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
         binding = ActivityAddTripBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         viewModel = ViewModelProviders.of(this).get(AddTripViewModel.class);
-
+        getSupportActionBar().hide();
 
         spinner = findViewById(R.id.trip_type);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.types, R.layout.spinner_item);

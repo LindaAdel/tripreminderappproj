@@ -1,9 +1,5 @@
 package com.example.tripreminderapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,14 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -35,8 +34,6 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -111,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(MainActivity.this, UpComingTripsActivity.class));
+                            startActivity(new Intent(MainActivity.this, HomeActivity.class));
                         } else {
                             Log.w(TAG, "", task.getException());
                             Toast.makeText(MainActivity.this, "couldn't LOGIN", Toast.LENGTH_LONG).show();
@@ -166,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 // Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
-                startActivity(new Intent(MainActivity.this, UpComingTripsActivity.class));
+                startActivity(new Intent(MainActivity.this, HomeActivity.class));
                 Toast.makeText(this, "Register with google success", Toast.LENGTH_SHORT).show();
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
@@ -224,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null){
-            startActivity(new Intent(MainActivity.this, UpComingTripsActivity.class));
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));
         }
     }
 }
