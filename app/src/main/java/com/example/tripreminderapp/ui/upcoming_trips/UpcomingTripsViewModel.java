@@ -31,7 +31,7 @@ public class UpcomingTripsViewModel extends AndroidViewModel {
     }
 
 
-    private void getTripsFromDatabase() {
+    public void getTripsFromDatabase() {
         tripsListLiveData.setValue(database.tripDao().getAll());
 
     }
