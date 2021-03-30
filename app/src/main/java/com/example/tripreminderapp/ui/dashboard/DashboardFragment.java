@@ -1,5 +1,6 @@
 package com.example.tripreminderapp.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -51,14 +52,14 @@ public class DashboardFragment extends Fragment {
             dashboardAdapter.changeData(trips);
 
         });
-/*
-        binding.h.setOnClickListener(new View.OnClickListener() {
+
+        binding.homeBtnAddTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),MapActivity.class));
             }
         });
-*/
+
 
 
 
