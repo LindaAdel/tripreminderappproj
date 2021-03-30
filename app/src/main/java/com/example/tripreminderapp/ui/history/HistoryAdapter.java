@@ -1,4 +1,4 @@
-package com.example.tripreminderapp.ui.dashboard;
+package com.example.tripreminderapp.ui.history;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import com.example.tripreminderapp.database.trip.Trip;
 
 import java.util.List;
 
-public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder>{
+public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder>{
 
     private List<Trip> data = null;
 

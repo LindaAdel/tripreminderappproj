@@ -71,7 +71,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.dashboard.MapActivity" />
+        <activity android:name=".ui.history.MapActivity" />
     </application>
 
 </manifest>
