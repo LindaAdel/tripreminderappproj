@@ -17,13 +17,15 @@ public class Trip implements Serializable {
     private String time;
     private String date_time;
     private String status;
-    private String spinner;
-
+    private String type;
+    private double startLatitude;
+    private double startLongitude;
+    private double endLatitude;
+    private double endLongitude;
     private boolean isOK;
-
     private boolean isAlarmPrepared;
 
-    public Trip(String name, String startPoint, String endPoint, String date, String time, String date_time, String spinner) {
+    public Trip(String name, String startPoint, String endPoint, String date, String time, String date_time, String type) {
         this.id = id;
         this.name = name;
         this.startPoint = startPoint;
@@ -33,14 +35,31 @@ public class Trip implements Serializable {
         this.date_time = date_time;
         this.isAlarmPrepared = false;
         isOK=false;
-        this.spinner = spinner;
+        this.type = type;
 
+    }
+
+    public Trip(int id, String name, String startPoint, String endPoint, String date, String time, String date_time, String status, String type, double startLatitude, double startLongitude, double endLatitude, double endLongitude, boolean isOK, boolean isAlarmPrepared) {
+        this.id = id;
+        this.name = name;
+        this.startPoint = startPoint;
+        this.endPoint = endPoint;
+        this.date = date;
+        this.time = time;
+        this.date_time = date_time;
+        this.status = status;
+        this.type = type;
+        this.startLatitude = startLatitude;
+        this.startLongitude = startLongitude;
+        this.endLatitude = endLatitude;
+        this.endLongitude = endLongitude;
+        this.isOK = isOK;
+        this.isAlarmPrepared = isAlarmPrepared;
     }
 
     public Trip() {
         this.isAlarmPrepared = false;
         this.isOK = false;
-
     }
 
     public Trip(String name, String startPoint, String endPoint, String date, String time) {
@@ -65,13 +84,48 @@ public class Trip implements Serializable {
     }
 
 
-
-    public String getSpinner() {
-        return spinner;
+    public double getStartLatitude() {
+        return startLatitude;
     }
 
-    public void setSpinner(String spinner) {
-        this.spinner = spinner;
+    public void setStartLatitude(double startLatitude) {
+        this.startLatitude = startLatitude;
+    }
+
+    public double getStartLongitude() {
+        return startLongitude;
+    }
+
+    public void setStartLongitude(double startLongitude) {
+        this.startLongitude = startLongitude;
+    }
+
+    public double getEndLatitude() {
+        return endLatitude;
+    }
+
+    public void setEndLatitude(double endLatitude) {
+        this.endLatitude = endLatitude;
+    }
+
+    public double getEndLongitude() {
+        return endLongitude;
+    }
+
+    public void setEndLongitude(double endLongitude) {
+        this.endLongitude = endLongitude;
+    }
+
+    public boolean isAlarmPrepared() {
+        return isAlarmPrepared;
+    }
+
+    public void setAlarmPrepared(boolean alarmPrepared) {
+        isAlarmPrepared = alarmPrepared;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getStatus() {
@@ -82,14 +136,6 @@ public class Trip implements Serializable {
         this.status = status;
     }
 
-
-    public boolean getIsAlarmPrepared() {
-        return isAlarmPrepared;
-    }
-
-    public void setAlarmPrepared(boolean alarmPrepared) {
-        isAlarmPrepared = alarmPrepared;
-    }
 
     public String getDate_time() {
         return date_time;
@@ -157,6 +203,10 @@ public class Trip implements Serializable {
         }else {
             setStatus("Canceled");
         }
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 

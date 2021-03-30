@@ -9,9 +9,9 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
-import com.example.tripreminderapp.MyWorker;
 import com.example.tripreminderapp.database.TripDatabase;
 import com.example.tripreminderapp.database.trip.Trip;
+import com.example.tripreminderapp.reminder.MyWorker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,7 +41,7 @@ public class UpcomingTripsViewModel extends AndroidViewModel {
     public void setAlarm(Trip trip) {
         Trip currentTrip = trip;
         long seconds = calcDeferenceInDatesBySeconds(currentTrip.getDate_time());
-        if (!trip.getIsAlarmPrepared()) {
+        if (!trip.isAlarmPrepared()) {
             WorkRequest uploadWorkRequest =
                     new OneTimeWorkRequest.Builder(MyWorker.class)
                             .setInitialDelay(seconds, TimeUnit.SECONDS)
@@ -66,9 +66,6 @@ public class UpcomingTripsViewModel extends AndroidViewModel {
         return -1;
     }
 
-//    private void updateTrip(Trip trip) {
-//        database.tripDao().updateTrip(trip.getName(), trip.getStartPoint(), trip.getStartPoint(), trip.getDate(), trip.getTime(), trip.getDate_time(), trip.getIsAlarmPrepared(),false, trip.getSpinner(),trip.getId());
-//    }
 
     private void updateTrip(Trip trip) {
         database.tripDao().update(trip);

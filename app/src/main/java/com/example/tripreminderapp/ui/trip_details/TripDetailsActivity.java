@@ -103,7 +103,7 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         binding.edTime.getEditText().setText(currentTrip.getTime());
 
 
-        spinner.setSelection(((ArrayAdapter<String>)spinner.getAdapter()).getPosition(currentTrip.getSpinner()));
+        spinner.setSelection(((ArrayAdapter<String>)spinner.getAdapter()).getPosition(currentTrip.getType()));
 
 
         viewModel.getNotesFromDatabase(currentTrip.getId());
