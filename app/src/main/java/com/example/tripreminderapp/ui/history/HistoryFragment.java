@@ -1,4 +1,4 @@
-package com.example.tripreminderapp.ui.dashboard;
+package com.example.tripreminderapp.ui.history;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,38 +20,36 @@ import com.example.tripreminderapp.databinding.FragmentDashboardBinding;
 
 import java.util.List;
 
-public class DashboardFragment extends Fragment {
+public class HistoryFragment extends Fragment {
     private FragmentDashboardBinding binding;
-    private DashboardViewModel dashboardViewModel;
+    private  final HistoryAdapter historyAdapter = new HistoryAdapter();
 
     String address;
     String[]sentenseArray;
     String lat,lang;
     double latitude,langtude;
-
-    private  final DashboardAdapter dashboardAdapter = new DashboardAdapter();
+    private HistoryViewModel historyViewModel;
     List<Trip> startPoints;
     Trip trip;
 
-    public DashboardFragment(){}
+    public HistoryFragment(){}
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+        historyViewModel = new ViewModelProvider(this).get(HistoryViewModel.class);
 
 
 
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        historyViewModel =
+                new ViewModelProvider(this).get(HistoryViewModel.class);
         //View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        binding.dashRvTrip.setAdapter(dashboardAdapter);
-
-        dashboardViewModel.getTripsListLiveData().observe(getViewLifecycleOwner(), trips -> {
-            dashboardAdapter.changeData(trips);
-
-        });
+        binding.dashRvTrip.setAdapter(historyAdapter);
+//        historyViewModel.getTripsListLiveData().observe(getViewLifecycleOwner(), trips -> {
+//            historyAdapter.changeData(trips);
+//
+//        });
 
         binding.homeBtnAddTrip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,14 +61,7 @@ public class DashboardFragment extends Fragment {
 
 
 
-        dashboardAdapter.changeData(TripDatabase.getInstance(getActivity()).tripDao().getTripDone());
-
-
-        List<Trip>data = TripDatabase.getInstance(getActivity()).tripDao().getAll();
-
-//        getLangLat(data.get(0).getStartPoint());
-  //      getLangLat(data.get(0).getEndPoint());
-
+        historyAdapter.changeData(TripDatabase.getInstance(getActivity()).tripDao().getTripDone());
         return view;
     }
 

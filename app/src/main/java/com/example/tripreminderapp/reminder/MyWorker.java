@@ -1,4 +1,4 @@
-package com.example.tripreminderapp;
+package com.example.tripreminderapp.reminder;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -15,6 +15,9 @@ import androidx.core.app.NotificationCompat;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.example.tripreminderapp.HomeActivity;
+import com.example.tripreminderapp.R;
+
 import java.util.Random;
 
 public class MyWorker extends Worker {
@@ -30,7 +33,7 @@ public class MyWorker extends Worker {
     @Override
     public Result doWork() {
         //displayNotification("My Worker", "Hey I finished my work");
-        dNotification();
+      //  dNotification();
 
         IntentFilter filter = new IntentFilter("com.example.workmanagerexample");
         MyReceiver myReceiver = new MyReceiver();

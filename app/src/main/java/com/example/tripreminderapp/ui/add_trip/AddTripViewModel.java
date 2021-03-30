@@ -16,6 +16,7 @@ public class AddTripViewModel extends AndroidViewModel {
     public AddTripViewModel(@NonNull Application application) {
         super(application);
     }
+
     public void insertTrip(Trip trip){
         tripDatabase.tripDao().insertTrip(trip);
         isInsertedLiveData.setValue(true);

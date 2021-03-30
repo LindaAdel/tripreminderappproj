@@ -1,4 +1,4 @@
-package com.example.tripreminderapp.ui.dashboard;
+package com.example.tripreminderapp.ui.history;
 
 import android.app.Application;
 
@@ -11,13 +11,13 @@ import com.example.tripreminderapp.database.trip.Trip;
 
 import java.util.List;
 
-public class DashboardViewModel extends AndroidViewModel {
+public class HistoryViewModel extends AndroidViewModel {
 
     private final TripDatabase database;
     private final MutableLiveData<List<Trip>> tripsListLiveData = new MutableLiveData<>();
 
 
-    public DashboardViewModel(@NonNull Application application) {
+    public HistoryViewModel(@NonNull Application application) {
         super(application);
         database = TripDatabase.getInstance(getApplication());
         getTripsFromDatabase();
@@ -28,7 +28,6 @@ public class DashboardViewModel extends AndroidViewModel {
     private void getTripsFromDatabase() {
         tripsListLiveData.setValue(database.tripDao().getTripDone());
         tripsListLiveData.setValue(database.tripDao().getAll());
-
     }
 
     public MutableLiveData<List<Trip>> getTripsListLiveData() {

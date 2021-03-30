@@ -1,29 +1,25 @@
-package com.example.tripreminderapp;
+package com.example.tripreminderapp.reminder;
 
-import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
-import android.view.WindowManager;
 import android.widget.RemoteViews;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.tripreminderapp.HomeActivity;
+import com.example.tripreminderapp.R;
+
 import java.util.Random;
 
 public class MyReceiver extends BroadcastReceiver {
-    Context context;
-    WindowManager windowManager2;
-
+    private Context context;
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
-        //
         Intent intent1 = new Intent(context,MyService.class);
         context.startService(intent1);
     }
