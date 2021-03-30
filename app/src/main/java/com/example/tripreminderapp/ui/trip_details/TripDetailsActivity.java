@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -189,9 +190,23 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         binding.edDate.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(TripDetailsActivity.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                Calendar c = Calendar.getInstance();
+                DatePickerDialog dialog = new DatePickerDialog(TripDetailsActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String _year = String.valueOf(year);
+                        String _month = (month+1) < 10 ? "0" + (month+1) : String.valueOf(month+1);
+                        String _date = dayOfMonth < 10 ? "0" + dayOfMonth : String.valueOf(dayOfMonth);
+                        String _pickedDate = _year + "-" + _month + "-" + _date;
+                        Log.e("PickedDate: ", "Date: " + _pickedDate); //2019-02-12
+                        binding.edDate.getEditText().setText(_pickedDate);
+                        //updateLabel();
+                    }
+                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.MONTH));
+                dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dialog.show();
+
+
             }
         });
 

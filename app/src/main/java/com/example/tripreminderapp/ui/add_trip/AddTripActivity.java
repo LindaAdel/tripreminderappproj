@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,7 +37,7 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
     private ActivityAddTripBinding binding;
     private static final String TAG = "Tag";
     private static final int REQ_CODE = 111;
-    final Calendar myCalendar = Calendar.getInstance();
+    final Calendar c = Calendar.getInstance();
     private AddTripViewModel viewModel;
     private Spinner spinner;
 
@@ -78,23 +79,44 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
                 startActivityForResult(intent, REQ_CODE + 1);
             }
         });
-        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
-        };
+//        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                // TODO Auto-generated method stub
+//                myCalendar.set(Calendar.YEAR, year);
+//                myCalendar.set(Calendar.MONTH, monthOfYear);
+//                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+//                updateLabel();
+//            }
+//        };
         binding.edDate.getEditText().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new DatePickerDialog(AddTripActivity.this, date, myCalendar
+//                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+//                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+//            }
+
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(AddTripActivity.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                Calendar c = Calendar.getInstance();
+                DatePickerDialog dialog = new DatePickerDialog(AddTripActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String _year = String.valueOf(year);
+                        String _month = (month+1) < 10 ? "0" + (month+1) : String.valueOf(month+1);
+                        String _date = dayOfMonth < 10 ? "0" + dayOfMonth : String.valueOf(dayOfMonth);
+                        String _pickedDate = _year + "-" + _month + "-" + _date;
+                        Log.e("PickedDate: ", "Date: " + _pickedDate); //2019-02-12
+                        binding.edDate.getEditText().setText(_pickedDate);
+                        //updateLabel();
+                    }
+                } , c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.MONTH));
+                dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+                dialog.show();
             }
+
         });
         binding.edTime.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,8 +150,10 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
 
 
 
-                Trip trip = new Trip(name, startPoint, endPoint, date, time,date+" "+time,type);
-                viewModel.insertTrip(trip);
+                if(validateError() == true) {
+                    Trip trip = new Trip(name, startPoint, endPoint, date, time,date+" "+time,type);
+                    viewModel.insertTrip(trip);
+                }
 
             }
         });
@@ -150,11 +174,11 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
             Toast.makeText(this, "error  " + status.getStatusMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-    private void updateLabel() {
-        String myFormat = "MM/dd/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        binding.edDate.getEditText().setText(sdf.format(myCalendar.getTime()));
-    }
+//    private void updateLabel() {
+//        String myFormat = "MM/dd/yyyy"; //In which you need put here
+//        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+//        binding.edDate.getEditText().setText(sdf.format(c.getTime()));
+//    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -163,6 +187,60 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
+    private Boolean validateError() {
+        String tNameVal = binding.edName.getEditText().getText().toString();
+        String spointVal = binding.edStartPoint.getEditText().getText().toString();
+        String epointVal = binding.edEndPoint.getEditText().getText().toString();
+        String dateVal = binding.edDate.getEditText().getText().toString();
+        String timeVal = binding.edTime.getEditText().getText().toString();
+        if(tNameVal.isEmpty() ){
+            binding.edName.setError("TripName Required");
+            binding.edName.requestFocus();
+            return false;
+        }
+        else if(spointVal.isEmpty()) {
+            binding.edStartPoint.setError("Start Point required");
+            binding.edStartPoint.requestFocus();
+
+            return false;
+        }
+        else if(epointVal.isEmpty()) {
+            binding.edEndPoint.setError("End Point required");
+            binding.edEndPoint.requestFocus();
+            return false;
+        }
+        else if(dateVal.isEmpty()) {
+            binding.edDate.setError("date reqquired");
+            binding.edDate.requestFocus();
+            return false;
+        }
+        else if(timeVal.isEmpty()) {
+            binding.edTime.setError("Time required");
+            binding.edTime.requestFocus();
+            return false;
+        }
+        else {
+            binding.edName.setError(null);
+            binding.edName.setErrorEnabled(false);
+
+            binding.edStartPoint.setError(null);
+            binding.edStartPoint.setErrorEnabled(false);
+
+            binding.edEndPoint.setError(null);
+            binding.edEndPoint.setErrorEnabled(false);
+
+            binding.edDate.setError(null);
+            binding.edDate.setErrorEnabled(false);
+
+            binding.edTime.setError(null);
+            binding.edTime.setErrorEnabled(false);
+
+            return true;
+        }
 
     }
 }
