@@ -10,15 +10,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/white"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/item_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="airport trip" />
@@ -48,8 +51,10 @@
             android:id="@+id/item_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="52dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/white"
             android:text="8:20"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:background="@color/white"
             android:text="15-2-2020"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -70,6 +76,10 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="48dp"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_calendar" />
@@ -78,16 +88,24 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/item_tv_time"
             app:layout_constraintEnd_toStartOf="@+id/item_tv_time"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.976"
+            app:layout_constraintStart_toEndOf="@+id/item_tv_date"
+            app:layout_constraintTop_toTopOf="@+id/item_tv_time"
             app:srcCompat="@drawable/ic__4_hours_support" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
             android:text="From : "
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -96,9 +114,10 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="28dp"
             android:text="To : "
             app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -106,31 +125,36 @@
             android:id="@+id/item_iv_addNote"
             android:layout_width="26dp"
             android:layout_height="45dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/delete_trip"
-            app:layout_constraintTop_toBottomOf="@+id/item_tv_time"
+            android:layout_marginTop="148dp"
+            android:layout_marginEnd="128dp"
+            android:layout_marginRight="128dp"
+            app:layout_constraintEnd_toStartOf="@+id/item_iv_start"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/delete_trip"
+            app:layout_constraintTop_toBottomOf="@+id/item_tv_name"
             app:srcCompat="@drawable/ic_notebook" />
 
         <ImageView
             android:id="@+id/item_iv_start"
             android:layout_width="34dp"
             android:layout_height="41dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_iv_addNote"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/delete_trip"
             app:srcCompat="@drawable/ic_video_play_button" />
 
         <ImageView
             android:id="@+id/delete_trip"
             android:layout_width="30dp"
             android:layout_height="38dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_remove"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_iv_addNote"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_tv_end"
+            app:srcCompat="@drawable/delete"
             tools:ignore="MissingConstraints" />
 
 

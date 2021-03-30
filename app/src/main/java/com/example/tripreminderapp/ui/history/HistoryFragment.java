@@ -56,6 +56,7 @@ public class HistoryFragment extends Fragment {
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),MapActivity.class));
             }
+
         });
 
 
