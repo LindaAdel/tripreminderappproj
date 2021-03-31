@@ -35,8 +35,12 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="api_places_key">AIzaSyCVOvMSNN18_AJKQjfKfoWKxsYNF5GNxK0</string>
-
-
+    <string name="UserName">UserName</string>
+    <string name="e_mail">E_mail Address</string>
+    <string name="Fb">FaceBook Account</string>
+    <string name="logout">Log Out</string>
+    <string name="Done">Done</string>
+    <string name="Profile">Profile</string>
 
 
 </resources>
