@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.tripreminderapp.FloatWidgetService;
 import com.example.tripreminderapp.R;
 import com.example.tripreminderapp.database.TripDatabase;
 import com.example.tripreminderapp.database.note.Note;
@@ -23,6 +26,7 @@ import com.example.tripreminderapp.ui.add_trip.AddTripActivity;
 import com.example.tripreminderapp.ui.trip_details.TripDetailsActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UpcomingTripsFragment extends Fragment {
@@ -52,10 +56,8 @@ public class UpcomingTripsFragment extends Fragment {
 
         tripsViewModel.getTripsListLiveData().observe(getViewLifecycleOwner(), trips -> {
             upcomingTripAdapter.changeData(trips);
-            if (trips != null && trips.size() > 0) {
-                tripsViewModel.setAlarm(trips.get(0));
-            }
         });
+
 
         upcomingTripAdapter.setAddNoteClickListener = new UpcomingTripAdapter.AddNoteClickListener() {
             @Override
@@ -86,7 +88,15 @@ public class UpcomingTripsFragment extends Fragment {
         upcomingTripAdapter.setStartTrip =new UpcomingTripAdapter.StartTrip() {
             @Override
             public void onClick(Trip trip) {
-
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(getContext())) {
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                            Uri.parse("package:" + getActivity().getPackageName()));
+                    startActivityForResult(intent, 106);
+                } else {
+                    Intent startIntent = new Intent(getContext(), FloatWidgetService.class);
+                    startIntent.putExtra("notes", (ArrayList<Note>) TripDatabase.getInstance(getActivity()).noteDao().getNotes(trip.getId()));
+                    getActivity().startService(startIntent);
+                }
                 showTripDialog(trip);
                 //getLangLat(trip.getStartPoint());
                 //getLangLat(trip.getEndPoint());

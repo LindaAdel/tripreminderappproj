@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.WindowManager;
 import android.widget.RemoteViews;
 
@@ -32,9 +31,11 @@ public class MyWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        //displayNotification("My Worker", "Hey I finished my work");
+        displayNotification("My Worker", "Hey I finished my work");
       //  dNotification();
-
+        Intent intent = new Intent(getApplicationContext(),MyService.class);
+        context.startService(intent);
+/*
         IntentFilter filter = new IntentFilter("com.example.workmanagerexample");
         MyReceiver myReceiver = new MyReceiver();
         context.registerReceiver(myReceiver, filter);
@@ -43,7 +44,7 @@ public class MyWorker extends Worker {
         intentToBC.setAction("com.example.workmanagerexample");
         //intentToBC.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         context.sendBroadcast(intentToBC);
-        //context.startActivity(new Intent(context,MainActivity2.class));
+        //context.startActivity(new Intent(context,MainActivity2.class));*/
         return Result.success();
     }
 

@@ -1,10 +1,13 @@
 package com.example.tripreminderapp.ui.add_trip;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,14 +21,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tripreminderapp.R;
+import com.example.tripreminderapp.database.TripDatabase;
 import com.example.tripreminderapp.database.trip.Trip;
 import com.example.tripreminderapp.databinding.ActivityAddTripBinding;
+import com.example.tripreminderapp.reminder.MyService;
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -33,12 +41,12 @@ import java.util.List;
 public class AddTripActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private ActivityAddTripBinding binding;
-    private static final String TAG = "Tag";
     private static final int REQ_CODE = 111;
     final Calendar c = Calendar.getInstance();
     private AddTripViewModel viewModel;
     private Spinner spinner;
     private Trip trip = new Trip();
+    private Calendar calendar;
 
 
     @Override
@@ -48,6 +56,7 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
         setContentView(binding.getRoot());
         viewModel = ViewModelProviders.of(this).get(AddTripViewModel.class);
         getSupportActionBar().hide();
+        calendar =Calendar.getInstance();
 
         spinner = findViewById(R.id.trip_type);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.types, R.layout.spinner_item);
@@ -55,6 +64,9 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+
+
+        syncDataWithFirebaseDatabase(TripDatabase.getInstance(getApplicationContext()).tripDao().getAll());
 
 
         Places.initialize(getApplicationContext(), getString(R.string.api_places_key));
@@ -85,13 +97,16 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
                 DatePickerDialog dialog = new DatePickerDialog(AddTripActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String _year = String.valueOf(year);
-                        String _month = (month+1) < 10 ? "0" + (month+1) : String.valueOf(month+1);
-                        String _date = dayOfMonth < 10 ? "0" + dayOfMonth : String.valueOf(dayOfMonth);
-                        String _pickedDate = _year + "-" + _month + "-" + _date;
-                        Log.e("PickedDate: ", "Date: " + _pickedDate); //2019-02-12
-                        binding.edDate.getEditText().setText(_pickedDate);
-                        //updateLabel();
+//                        String _year = String.valueOf(year);
+//                        String _month = (month+1) < 10 ? "0" + (month+1) : String.valueOf(month+1);
+//                        String _date = dayOfMonth < 10 ? "0" + dayOfMonth : String.valueOf(dayOfMonth);
+//                        String _pickedDate = _year + "-" + _month + "-" + _date;
+//                        Log.e("PickedDate: ", "Date: " + _pickedDate);
+                        calendar.set(Calendar.YEAR , year);
+                        calendar.set(Calendar.MONTH , month);
+                        calendar.set(Calendar.DAY_OF_MONTH , dayOfMonth);
+                        String date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+                        binding.edDate.getEditText().setText(date);
                     }
                 } , c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.MONTH));
                 dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
@@ -100,6 +115,7 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
             }
 
         });
+
         binding.edTime.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +127,10 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
                 mTimePicker = new TimePickerDialog(AddTripActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        binding.edTime.getEditText().setText(selectedHour + ":" + selectedMinute);
+                        calendar.set(Calendar.MINUTE , minute);
+                        calendar.set(Calendar.HOUR_OF_DAY , selectedHour);
+                        calendar.set(Calendar.SECOND , 0);
+                        binding.edTime.getEditText().setText(selectedHour+ " : " + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -119,14 +138,32 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
 
             }
         });
+
         binding.addNewTripBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), MyService.class);
+                PendingIntent pintent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
+
+                AlarmManager alarm = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                    alarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+                   // alarm.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pintent);
+                    alarm.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pintent);
+                }
+
+
+
+
+
                 trip.setName(binding.edName.getEditText().getText().toString());
                 trip.setStartPoint(binding.edStartPoint.getEditText().getText().toString());
                 trip.setEndPoint(binding.edEndPoint.getEditText().getText().toString());
                 trip.setDate(binding.edDate.getEditText().getText().toString());
                 trip.setTime(binding.edTime.getEditText().getText().toString());
+
                 trip.setDate_time(binding.edDate.getEditText().getText().toString()+" "+binding.edTime.getEditText().getText().toString());
                 trip.setType(getResources().getStringArray(R.array.types)[spinner.getSelectedItemPosition()]);
 
@@ -138,8 +175,8 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
 
             }
         });
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -223,6 +260,22 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
             return true;
         }
 
+    }
+
+    void syncDataWithFirebaseDatabase(final List<Trip> tripList) {
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference();
+
+        //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        for (int indx = 0; indx < tripList.size(); ++indx) {
+
+            Trip trip = tripList.get(indx);
+            reference.child("trips").child("tiz taha").push().setValue(trip).addOnCompleteListener(task -> {
+                Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 }
 
