@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
                 Toast.makeText(this, "Register with google success", Toast.LENGTH_SHORT).show();
             } catch (ApiException e) {
+                Toast.makeText(this, "error"+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 // Google Sign In failed, update UI appropriately
             }
         }
