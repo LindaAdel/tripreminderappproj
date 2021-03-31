@@ -272,11 +272,12 @@ public class AddTripActivity extends AppCompatActivity implements AdapterView.On
         for (int indx = 0; indx < tripList.size(); ++indx) {
 
             Trip trip = tripList.get(indx);
-            reference.child("trips").child("tiz taha").push().setValue(trip).addOnCompleteListener(task -> {
+            reference.child("trips").child("mahmoud").push().setValue(trip).addOnCompleteListener(task -> {
                 Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
             });
         }
     }
+
 }
 
 
