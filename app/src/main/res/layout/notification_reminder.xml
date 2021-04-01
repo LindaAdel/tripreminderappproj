@@ -16,14 +16,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/tripName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="Caller's Name" />
 
             <TextView
-                android:id="@+id/callType"
+                android:id="@+id/tripEndPoint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-10dp"
@@ -36,7 +36,7 @@
             android:id="@+id/photo"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_notebook" />
+            android:src="@drawable/ic_alarm_clock" />
 
     </LinearLayout>
 
@@ -48,25 +48,25 @@
         android:paddingEnd="5dp">
 
         <Button
-            android:id="@+id/btnDecline"
+            android:id="@+id/btnDismiss"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="0.5"
             android:backgroundTint="@color/colorPrimary"
-            android:text="Decline"
+            android:text="dismiss"
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btnAnswer"
+            android:id="@+id/btnStart"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:layout_weight="0.5"
             android:backgroundTint="@color/colorPrimary"
-            android:text="Answer"
+            android:text="start"
             android:textColor="@color/white" />
 
     </LinearLayout>

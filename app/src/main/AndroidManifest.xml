@@ -26,29 +26,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TripReminderApp">
+
         <activity android:name=".MainActivity" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.add_trip.AddTripActivity" />
         <activity android:name=".CreateANewAccountActivity" />
         <activity android:name=".ui.trip_details.TripDetailsActivity" />
-        <activity android:name=".SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SplashScreen"></activity>
 
         <service
-        android:name=".FloatWidgetService"
-        android:enabled="true"
-        android:exported="true" />
-
-
-        <service android:name=".reminder.MyService"/>
+            android:name=".FloatWidgetService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".reminder.MyService"
+            android:enabled="true"
+            android:exported="true"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -62,7 +63,6 @@
         <meta-data
             android:name="com.here.sdk.access_key_secret"
             android:value="0fURe3dyatACPj-pgDzJnZFAw6-DpAWSHA4ElIFT3aLAGenABfbY4wTafqWRTDVdlSAiIJtvc8OqdW5P0e2shA" />
-
 
         <receiver
             android:name=".reminder.MyReceiver"
@@ -78,12 +78,13 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.history.MapActivity" />
     </application>
 

@@ -6,22 +6,23 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.RemoteViews;
 
 import androidx.core.app.NotificationCompat;
 
 import com.example.tripreminderapp.HomeActivity;
 import com.example.tripreminderapp.R;
 
-import java.util.Random;
-
 public class MyReceiver extends BroadcastReceiver {
     private Context context;
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
-        Intent intent1 = new Intent(context,MyService.class);
-        context.startService(intent1);
+
+        Intent intent2 = new Intent(context, MyService.class);
+        context.stopService(intent2);
+
+
+        displayNotification(context,"trip dismissed!!","don't forget your trip");
     }
 
     private void displayNotification(Context context, String title, String task) {
@@ -31,7 +32,6 @@ public class MyReceiver extends BroadcastReceiver {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.notification_reminder);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("channel_id", "channel_name", NotificationManager.IMPORTANCE_DEFAULT);
@@ -43,13 +43,9 @@ public class MyReceiver extends BroadcastReceiver {
                 .setContentText(task)
                 .setContentIntent(pendingIntent)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-                .setCustomContentView(notificationLayout)
                 .setSmallIcon(R.drawable.add);
 
-        Random random = new Random();
-        int m = random.nextInt(9999 - 1000) + 1000;
-
-        notificationManager.notify(1, notification.build());
+        notificationManager.notify(1125, notification.build());
     }
 
 

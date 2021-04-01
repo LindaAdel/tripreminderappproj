@@ -27,7 +27,6 @@ import com.example.tripreminderapp.ui.trip_details.TripDetailsActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class UpcomingTripsFragment extends Fragment {
     private FragmentUpcomingBinding binding;
@@ -37,8 +36,6 @@ public class UpcomingTripsFragment extends Fragment {
     private AlertDialog addToHistory;
     private AlertDialog deletTripDialog;
     private UpcomingTripsViewModel tripsViewModel;
-
-    List<Trip> trips;
 
     @Override
     public void onStart() {
@@ -83,6 +80,8 @@ public class UpcomingTripsFragment extends Fragment {
             }
         });
 
+        //FirebaseHandler firebaseHandler = new FirebaseHandler(getActivity());
+        //firebaseHandler.syncDataWithFirebaseDatabase();
 
         //Mido
         //button to start trip

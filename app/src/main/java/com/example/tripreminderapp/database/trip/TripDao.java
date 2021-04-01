@@ -16,6 +16,9 @@ public interface TripDao {
     @Query("SELECT * FROM Trip WHERE isOK = 1  order by date_time asc ")
     List<Trip> getTripDone();
 
+    @Query("SELECT * FROM Trip WHERE date_time = :date_time")
+    List<Trip> getTrip(String date_time);
+
 
 
     @Insert

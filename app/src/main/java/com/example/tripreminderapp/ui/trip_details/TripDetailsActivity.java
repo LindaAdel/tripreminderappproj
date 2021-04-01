@@ -26,6 +26,7 @@ import com.example.tripreminderapp.database.TripDatabase;
 import com.example.tripreminderapp.database.note.Note;
 import com.example.tripreminderapp.database.trip.Trip;
 import com.example.tripreminderapp.databinding.ActivityTripDetailsBinding;
+import com.example.tripreminderapp.reminder.MyService;
 import com.example.tripreminderapp.ui.upcoming_trips.UpcomingTripsFragment;
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
@@ -67,6 +68,7 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         viewModel = ViewModelProviders.of(this).get(TripDetailsViewModel.class);
         getSupportActionBar().hide();
 
+
         spinner = findViewById(R.id.trip_type);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.types, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -90,12 +92,10 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
                 startActivityForResult(intent, REQ_CODE + 1);
             }
         });
-
-
-//        notesAdapter = new NotesAdapter();
-//        binding.detailsRvNote.setAdapter(notesAdapter);
-
+        Intent intent2 = new Intent(this, MyService.class);
+        stopService(intent2);
         currentTrip = (Trip) getIntent().getSerializableExtra(UpcomingTripsFragment.UPCOMING_DETAILS_EXTRA);
+        //currentTrip = (Trip) getIntent().getSerializableExtra("trip");
         binding.edName.getEditText().setText(currentTrip.getName());
         binding.edStartPoint.getEditText().setText(currentTrip.getStartPoint());
         binding.edEndPoint.getEditText().setText(currentTrip.getEndPoint());
