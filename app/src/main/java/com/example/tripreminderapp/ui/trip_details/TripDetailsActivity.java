@@ -50,7 +50,7 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
     private Trip currentTrip;
     private ActivityTripDetailsBinding binding;
     private TripDetailsViewModel viewModel;
-    private Spinner spinner;
+   // private Spinner spinner;
 
     private AlertDialog notesDialog=null;
 
@@ -67,10 +67,10 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         viewModel = ViewModelProviders.of(this).get(TripDetailsViewModel.class);
         getSupportActionBar().hide();
 
-        spinner = findViewById(R.id.trip_type);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.types, R.layout.spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+//        spinner = findViewById(R.id.trip_type);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.types, R.layout.spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
 
         changeBehaviour(false);
 
@@ -103,7 +103,7 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         binding.edTime.getEditText().setText(currentTrip.getTime());
 
 
-        spinner.setSelection(((ArrayAdapter<String>)spinner.getAdapter()).getPosition(currentTrip.getType()));
+      //  spinner.setSelection(((ArrayAdapter<String>)spinner.getAdapter()).getPosition(currentTrip.getType()));
 
 
         viewModel.getNotesFromDatabase(currentTrip.getId());
@@ -148,7 +148,7 @@ public class TripDetailsActivity extends AppCompatActivity   implements AdapterV
         binding.detailsBtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String type = getResources().getStringArray(R.array.types)[spinner.getSelectedItemPosition()];
+ //               String type = getResources().getStringArray(R.array.types)[spinner.getSelectedItemPosition()];
 //                String name = binding.edName.getEditText().getText().toString();
 //                String startPoint = binding.edStartPoint.getEditText().getText().toString();
 //                String endPoint = binding.edEndPoint.getEditText().getText().toString();

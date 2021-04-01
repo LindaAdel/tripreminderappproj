@@ -17,13 +17,16 @@ public class Trip implements Serializable {
     private String time;
     private String date_time;
     private String status;
-    private String type;
+    //private String type;
     private double startLatitude;
     private double startLongitude;
     private double endLatitude;
     private double endLongitude;
     private boolean isOK;
     private boolean isAlarmPrepared;
+
+
+
 
     public Trip(String name, String startPoint, String endPoint, String date, String time, String date_time, String type) {
         this.id = id;
@@ -35,7 +38,7 @@ public class Trip implements Serializable {
         this.date_time = date_time;
         this.isAlarmPrepared = false;
         isOK=false;
-        this.type = type;
+       // this.type = type;
 
     }
 
@@ -48,7 +51,7 @@ public class Trip implements Serializable {
         this.time = time;
         this.date_time = date_time;
         this.status = status;
-        this.type = type;
+        //this.type = type;
         this.startLatitude = startLatitude;
         this.startLongitude = startLongitude;
         this.endLatitude = endLatitude;
@@ -124,9 +127,9 @@ public class Trip implements Serializable {
         isAlarmPrepared = alarmPrepared;
     }
 
-    public String getType() {
-        return type;
-    }
+//    //public String getType() {
+//        return type;
+//    }
 
     public String getStatus() {
         return status;
@@ -205,9 +208,11 @@ public class Trip implements Serializable {
         }
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+
+
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
 
 }
