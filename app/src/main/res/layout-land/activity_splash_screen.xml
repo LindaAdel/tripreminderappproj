@@ -7,10 +7,11 @@
     android:background="@color/lightBlue"
     tools:context=".SplashScreen">
 
+
     <View
         android:id="@+id/topView"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="@dimen/_70sdp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -23,16 +24,17 @@
         android:layout_height="@dimen/_100sdp"
         android:background="@drawable/wave"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topView" />
 
     <TextView
         android:id="@+id/tripApp"
-        android:layout_width="@dimen/_300sdp"
-        android:layout_height="0dp"
+        android:layout_width="538dp"
+        android:layout_height="67dp"
         android:layout_marginStart="@dimen/_24sdp"
-        android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_48sdp"
+        android:layout_marginLeft="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_24sdp"
         android:layout_marginRight="@dimen/_24sdp"
         android:text="@string/app"
@@ -40,14 +42,14 @@
         android:textSize="@dimen/_45ssp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/_60sdp"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_32sdp"
         android:layout_marginLeft="@dimen/_32sdp"
         android:layout_marginTop="@dimen/_32sdp"
@@ -62,6 +64,4 @@
         app:layout_constraintTop_toBottomOf="@+id/view2"
         app:layout_constraintVertical_bias="0.749"
         tools:srcCompat="@tools:sample/avatars" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

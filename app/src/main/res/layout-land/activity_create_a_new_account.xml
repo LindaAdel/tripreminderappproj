@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateANewAccountActivity">
+
     <View
         android:id="@+id/topView"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="@dimen/_100sdp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -18,7 +19,7 @@
     <View
         android:id="@+id/view2"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_height="@dimen/_50sdp"
         android:background="@drawable/wave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,11 +27,11 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_marginTop="@dimen/_32sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:layout_marginRight="@dimen/_16sdp"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_28sdp"
+        android:layout_marginRight="@dimen/_28sdp"
         android:background="@drawable/ic_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/topView"
@@ -38,29 +39,27 @@
 
     <TextView
         android:id="@+id/tripApp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_400sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_32sdp"
         android:layout_marginLeft="@dimen/_32sdp"
-        android:layout_marginTop="@dimen/_44sdp"
+        android:layout_marginTop="@dimen/_32sdp"
         android:text="@string/aNewAcc"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/_30ssp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/topView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_32sdp"
-        android:layout_marginLeft="@dimen/_32sdp"
-        android:layout_marginTop="@dimen/_24sdp"
-        android:layout_marginEnd="@dimen/_32sdp"
-        android:layout_marginRight="@dimen/_32sdp"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_email"
         android:drawableLeft="@drawable/ic_email"
@@ -69,19 +68,16 @@
         android:hint="@string/E_mail"
         android:inputType="textEmailAddress"
         android:padding="@dimen/_16sdp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_32sdp"
-        android:layout_marginLeft="@dimen/_32sdp"
-        android:layout_marginTop="@dimen/_32sdp"
-        android:layout_marginEnd="@dimen/_32sdp"
-        android:layout_marginRight="@dimen/_32sdp"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_lock"
         android:drawableLeft="@drawable/ic_lock"
@@ -90,26 +86,21 @@
         android:hint="@string/Password"
         android:inputType="textPassword"
         android:padding="@dimen/_16sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_32sdp"
-        android:layout_marginLeft="@dimen/_32sdp"
-        android:layout_marginTop="@dimen/_32sdp"
-        android:layout_marginEnd="@dimen/_32sdp"
-        android:layout_marginRight="@dimen/_32sdp"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginEnd="@dimen/_70sdp"
+        android:layout_marginRight="@dimen/_70sdp"
+        android:layout_marginBottom="@dimen/_70sdp"
         android:background="@drawable/round_border"
         android:text="@string/signUp"
         android:textSize="@dimen/_18ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

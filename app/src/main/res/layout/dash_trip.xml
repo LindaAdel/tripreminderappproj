@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardMaxElevation="10dp"
-    app:cardCornerRadius="16dp"
+    app:cardMaxElevation="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_16sdp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_width="386dp"
+        android:layout_height="279dp"
         android:background="@color/white"
-        android:padding="8dp">
+        android:padding="@dimen/_8sdp">
 
         <TextView
             android:id="@+id/item_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -30,7 +30,8 @@
             android:id="@+id/item_tv_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintStart_toEndOf="@+id/textView"
@@ -51,9 +52,9 @@
             android:id="@+id/item_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_marginEnd="@dimen/_36sdp"
+            android:layout_marginRight="@dimen/_36sdp"
             android:background="@color/white"
             android:text="8:20"
             android:textStyle="bold"
@@ -64,7 +65,8 @@
             android:id="@+id/item_tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginLeft="8dp"
             android:background="@color/white"
             android:text="15-2-2020"
             android:textStyle="bold"
@@ -77,38 +79,35 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_24sdp"
             android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_calendar" />
+            app:srcCompat="@drawable/ic_calendar"
+            tools:ignore="VectorDrawableCompat" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginTop="@dimen/_32sdp"
             android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/item_tv_time"
             app:layout_constraintEnd_toStartOf="@+id/item_tv_time"
-            app:layout_constraintHorizontal_bias="0.988"
-            app:layout_constraintStart_toEndOf="@+id/item_tv_date"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/ic__4_hours_support" />
+            app:srcCompat="@drawable/ic__4_hours_support"
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_24sdp"
             android:background="@color/white"
-            android:text="From : "
+            android:text="@string/From"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -116,48 +115,36 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="To : "
+            android:layout_marginTop="@dimen/_24sdp"
+            android:text="@string/to"
             app:layout_constraintEnd_toEndOf="@+id/textView"
             app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <!--        <TextView-->
-        <!--            android:id="@+id/item_tv_status"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="8dp"-->
-        <!--            android:layout_marginEnd="8dp"-->
-        <!--            android:text="done"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/item_tv_time" />-->
 
         <TextView
             android:id="@+id/item_tv_status"
-            android:layout_width="50dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="260dp"
-            android:layout_marginLeft="260dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/delete_trip"
-            app:layout_constraintStart_toEndOf="@+id/delete_trip"
-            app:layout_constraintTop_toBottomOf="@+id/item_tv_time"
-            app:layout_constraintVertical_bias="1.0"
-            android:text="done"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_32sdp"
+            android:layout_marginRight="@dimen/_32sdp"
+            android:layout_marginBottom="@dimen/_32sdp"
+            android:text="@string/Done"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/delete_trip"
-            android:layout_width="30dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="28dp"
-            app:layout_constraintBottom_toBottomOf="@+id/item_iv_addNote"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginLeft="@dimen/_32sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_tv_end"
             app:srcCompat="@drawable/delete"
             tools:ignore="MissingConstraints" />
 

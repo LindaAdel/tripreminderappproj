@@ -13,8 +13,7 @@
         android:layout_height="@dimen/_230sdp"
         android:background="@color/white"
         android:padding="@dimen/_8sdp">
-
-        <TextView
+         <TextView
             android:id="@+id/item_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

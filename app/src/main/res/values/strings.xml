@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TripReminderApp</string>
     <string name="account">Already Have An Account?</string>
     <string name="E_mail">E_mail</string>
@@ -41,4 +41,21 @@
     <string name="logout">Log Out</string>
     <string name="Done">Done</string>
     <string name="Profile">Profile</string>
+    <string name="Add">Add</string>
+    <string name="Start">Start Point</string>
+    <string name="End">End Point</string>
+    <string name="Trip">Trip Name</string>
+    <string name="Date">Date</string>
+    <string name="Time">Time</string>
+    <string name="Edit">Edit</string>
+    <string name="Notes">Notes</string>
+    <string name="delete_trip">Do You Want To Delete This Trip?</string>
+    <string name="ok">ok</string>
+    <string name="go">Do you want to go to this trip now?</string>
+    <string name="Done" tools:ignore="DuplicateDefinition">Done</string>
+    <string name="to">To:</string>
+    <string name="From">From:</string>
+    <string name="save">save</string>
+    <string name="Title">Title</string>
+    <string name="Description">Description</string>
 </resources>
